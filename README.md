@@ -36,19 +36,27 @@
 Aesthetic-Logic.md              元框架（免费，必修）
 modules/                        具体审美体系（第一个：认知型形象战略）
   cognitive-image-strategy.md
+examples/                       两个完整判词样例（一正一反，都带推导链）
+  case-01-order.md              正例：秩序型，不留可攻击的面
+  case-02-symbol.md             反例：符号堆砌，买来的不是身份
+docs/
+  derivation.md                 从公理到取值的推导示范（可复核）
 schema/                         判定输出结构
-  assessment.json
-private/                        判定语料与阈值（付费层，不入开源）
+  assessment.json               形象场景
+  README.md                     如何扩展到版式 / 空间
 SKILL.md                        让 AI Agent 直接装载这套框架的入口
 ```
 
 ## 如何使用
 
 **给人看**：从 `Aesthetic-Logic.md` 开始，它教你判断一套视觉方案是否自洽。
+再看 `examples/` 两个样例——一正一反，每个都写了「为什么这么判」，不是「这么穿好看」。
+
+**想学怎么判**：读 `docs/derivation.md`，它示范了怎么从一条公理推导到一条具体取值，以及怎么反向检验一条取值是不是个人偏好。
 
 **给机器用**：把 `SKILL.md` 与 `Aesthetic-Logic.md` 一起装入 Agent 的技能目录，Agent 即可在处理视觉任务时调用这套框架。
 
-**给开发者**：`schema/assessment.json` 是判定输出的标准结构，可直接对接你自己的产品。
+**给开发者**：`schema/assessment.json` 是判定输出的标准结构；扩展到别的场景看 `schema/README.md`。
 
 ## 边界
 
