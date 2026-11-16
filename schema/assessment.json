@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aesthetic-academy/schema/assessment.json",
+  "title": "审美判定结果",
+  "description": "一次审美判定的标准输出。字段与 modules/*.md 的校验、过度判据一一对应。",
+  "type": "object",
+  "required": ["subject", "system", "prototype", "blockers", "parameters", "risks", "actions", "selfCheck"],
+  "properties": {
+    "subject": {
+      "type": "object",
+      "required": ["kind", "context", "goal"],
+      "properties": {
+        "kind": { "enum": ["person", "brand", "space", "work"] },
+        "context": { "type": "string", "description": "出现在哪、面对谁" },
+        "goal": { "enum": ["protect", "authority", "filter", "trust", "express"] }
+      }
+    },
+    "system": { "type": "string", "description": "调用的具体体系，如 cognitive-image-strategy" },
+    "prototype": {
+      "type": "object",
+      "required": ["main", "confidence"],
+      "properties": {
+        "main": { "enum": ["power", "advance", "order", "restraint"] },
+        "confidence": { "enum": ["initial", "calibrated"], "description": "初步倾向或已校准" },
+        "evidence": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type", "description"],
+        "properties": {
+          "type": { "enum": ["energy-leak", "boundary-gap", "signal-mismatch", "identity-drift"] },
+          "description": { "type": "string" },
+          "evidence": { "type": "string" }
+        }
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "required": ["silhouette", "color", "material", "detail"],
+      "properties": {
+        "silhouette": { "type": "string" },
+        "color": { "type": "string" },
+        "material": { "type": "string" },
+        "detail": { "type": "string" }
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "description"],
+        "properties": {
+          "type": { "enum": ["over-force", "homogenization", "signal-devaluation", "context-binding"] },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "selfCheck": {
+      "type": "object",
+      "description": "三条硬判据，缺一不可",
+      "required": ["energySaving", "closeRange", "identityConsistency"],
+      "properties": {
+        "energySaving": { "type": "boolean", "description": "30 分钟后是否忘记它" },
+        "closeRange": { "type": "boolean", "description": "近看是否经得起审视" },
+        "identityConsistency": { "type": "boolean", "description": "第三方描述是否与本人自述一致" }
+      }
+    },
+    "actions": {
+      "type": "array",
+      "maxItems": 3,
+      "items": { "type": "string" },
+      "description": "三步以内、下一次可直接执行的动作"
+    }
+  }
+}
